@@ -4,21 +4,22 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://docs.example.com',
 	integrations: [
 		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			title: 'Wingman Docs',
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/wingman-labs/-wingman-docs' }],
 			sidebar: [
 				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
+					label: 'Inicio',
+					items: [{ label: 'Wingman Docs', slug: 'index' }],
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					label: 'Seguridad',
+					items: [
+						{ label: 'Política de publicación segura', slug: 'publishing-policy' },
+						{ label: 'Checklist anti-doxx', slug: 'safety-checklist' },
+					],
 				},
 			],
 		}),
