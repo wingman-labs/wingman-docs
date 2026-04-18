@@ -4,7 +4,7 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://docs.example.com',
+	site: 'https://wingman-docs-3ty.pages.dev',
 	integrations: [
 		starlight({
 			title: 'Wingman Docs',
