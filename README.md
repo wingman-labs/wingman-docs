@@ -1,53 +1,72 @@
-<<<<<<< HEAD
-# -wingman-docs
-=======
-# Starlight Starter Kit: Basics
+# Wingman Docs
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+Base de documentación pública de Wingman, enfocada en contenido útil con privacidad primero.
 
-```
-npm create astro@latest -- --template starlight
-```
+## Stack
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- Astro + Starlight
+- Deploy estático en Cloudflare Pages
 
-## 🚀 Project Structure
+## Desarrollo local
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+```bash
+npm install
+npm run dev
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+Build producción:
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+```bash
+npm run build
+```
 
-Static assets, like favicons, can be placed in the `public/` directory.
+Salida estática: `dist/`
 
-## 🧞 Commands
+## Contenido clave
 
-All commands are run from the root of the project, from a terminal:
+- `src/content/docs/index.mdx`
+- `src/content/docs/publishing-policy.mdx`
+- `src/content/docs/safety-checklist.mdx`
+- `src/content/docs/guides/example.md` (flujo de publicación segura)
+- `src/content/docs/reference/example.md` (referencia rápida anti-doxx)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Seguridad web (Cloudflare Pages)
 
-## 👀 Want to learn more?
+Cabeceras definidas en `public/_headers`:
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
->>>>>>> e3bc089 (init astro starlight docs)
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `X-Frame-Options: DENY`
+- `Permissions-Policy` restrictiva
+- `Strict-Transport-Security`
+- `Content-Security-Policy` restrictiva
+
+## Deploy en Cloudflare Pages
+
+### Opción UI (recomendada)
+
+1. En Cloudflare Pages, crear proyecto conectado al repo GitHub.
+2. Configurar:
+   - Build command: `npm run build`
+   - Build output: `dist`
+3. Deploy.
+
+### Opción CLI (Wrangler)
+
+Entorno no interactivo requiere token:
+
+- Variable: `CLOUDFLARE_API_TOKEN`
+- Permisos mínimos: `Account:Read` + `Pages:Write`
+
+Luego:
+
+```bash
+npx --yes wrangler@4.83.0 pages project list
+```
+
+## Política
+
+Antes de publicar cualquier contenido nuevo, validar:
+
+1. `publishing-policy`
+2. `safety-checklist`
