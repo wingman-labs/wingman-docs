@@ -1,0 +1,70 @@
+---
+title: Generación de imágenes para posts (AI)
+description: Proceso operativo para generar hero images con prompts de ilustración y publicarlas en el blog.
+---
+
+## Objetivo
+
+Generar una imagen relevante por post (hero image), mantener consistencia visual y publicar sin romper el build.
+
+## Qué necesitamos
+
+### 1) Proveedor de imagen activo
+
+Opciones actuales:
+
+- OpenAI (`gpt-image-1`)
+- Google (`gemini-3.1-flash-image-preview` / `gemini-3-pro-image-preview`)
+
+### 2) Credenciales
+
+- `OPENAI_API_KEY` (si usamos OpenAI)
+- `GOOGLE_API_KEY` o `GEMINI_API_KEY` (si usamos Google)
+
+### 3) Prompt base de ilustración
+
+Usar una plantilla estable para mantener estilo.
+
+```txt
+Ilustración editorial para blog de startups/tecnología.
+Estilo limpio, moderno, profesional.
+Composición horizontal 3:2 (hero image).
+Paleta sobria con un color acento.
+Sin texto, sin logos, sin marcas de agua.
+Concepto del post: <tema_del_post>.
+```
+
+## Flujo recomendado
+
+1. Generar imagen con prompt específico del post.
+2. Guardar asset en `src/assets/generated/`.
+3. Actualizar frontmatter del post con:
+
+```yaml
+heroImage: '../../assets/generated/<archivo>.png'
+```
+
+4. Ejecutar build (`npm run build`).
+5. Commit + push para despliegue automático en Cloudflare Pages.
+
+## Checklist de calidad
+
+- ¿La imagen refleja el tema real del post?
+- ¿Se ve consistente con el resto del blog?
+- ¿No tiene texto raro, artefactos o elementos fuera de contexto?
+- ¿Se ve bien en desktop y mobile?
+
+## Observaciones del spike
+
+- El pipeline end-to-end ya es viable y está aplicado en posts reales.
+- Para evitar resultados genéricos, el prompt debe incluir:
+  - contexto del post,
+  - estilo visual esperado,
+  - restricciones explícitas (sin texto/logos).
+
+## Siguiente nivel (automatización)
+
+Automatizar un flujo “post + hero image”:
+
+- Input: título + resumen del post.
+- Output: markdown + hero image + commit listo para deploy.

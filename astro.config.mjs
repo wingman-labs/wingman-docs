@@ -16,7 +16,10 @@ export default defineConfig({
 				},
 				{
 					label: 'Guías',
-					items: [{ label: 'Flujo de publicación segura', slug: 'guides/example' }],
+					items: [
+						{ label: 'Flujo de publicación segura', slug: 'guides/example' },
+						{ label: 'Generación de imágenes para posts (AI)', slug: 'guides/image-generation-blog' },
+					],
 				},
 				{
 					label: 'Seguridad',
