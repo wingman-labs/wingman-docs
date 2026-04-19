@@ -15,10 +15,15 @@ export default defineConfig({
 					items: [{ label: 'Wingman Docs', slug: 'index' }],
 				},
 				{
+					label: 'Guías',
+					items: [{ label: 'Flujo de publicación segura', slug: 'guides/example' }],
+				},
+				{
 					label: 'Seguridad',
 					items: [
 						{ label: 'Política de publicación segura', slug: 'publishing-policy' },
 						{ label: 'Checklist anti-doxx', slug: 'safety-checklist' },
+						{ label: 'Referencia rápida anti-doxx', slug: 'reference/example' },
 					],
 				},
 			],

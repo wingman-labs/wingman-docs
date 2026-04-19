@@ -1,11 +1,34 @@
 ---
-title: Example Guide
-description: A guide in my new Starlight docs site.
+title: Flujo de publicación segura
+description: Paso a paso para publicar contenido útil sin exponer datos personales.
 ---
 
-Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.
-Writing a good guide requires thinking about what your users are trying to do.
+Usa este flujo antes de publicar cualquier artículo, post o documentación pública.
 
-## Further reading
+## 1) Define el objetivo
 
-- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+- ¿Qué quiere aprender la persona que lee?
+- ¿Qué resultado concreto debería obtener?
+
+## 2) Limpia datos sensibles
+
+- Elimina nombres completos, teléfonos, direcciones y correos personales.
+- No publiques screenshots con barras de navegador, pestañas o notificaciones visibles.
+- Reemplaza secretos por placeholders (`API_KEY`, `PROJECT_ID`).
+
+## 3) Revisa metadatos
+
+- Verifica EXIF en imágenes y archivos adjuntos.
+- Evita rutas locales (`/Users/...`, `C:\\...`) y nombres internos de red.
+- Asegúrate de no filtrar nombres de cliente o repos privados.
+
+## 4) Verifica contexto
+
+- Confirma que no haya pistas de ubicación, horarios o rutinas personales.
+- Prefiere ejemplos genéricos sobre casos reales identificables.
+
+## 5) Publica y revalida
+
+- Haz una revisión final con el [Checklist anti-doxx](/safety-checklist/).
+- Publica.
+- Revisa la página renderizada como visitante anónimo.
